@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Viewer</title>
+  <style>
+    /* --- Basic layout --- */
+    body { margin: 0; display: flex; height: 100vh; font-family: Arial, sans-serif; }
+    #sidebar { width: 200px; padding: 10px; background: #f3f3f3; overflow-y: auto; box-shadow: 2px 0 4px rgba(0,0,0,0.1); }
+    #content { flex: 1; padding: 20px; overflow-y: auto; }
+
+    /* --- Buttons --- */
+    .med-btn {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 6px;
+      border: none;
+      border-radius: 4px;
+      background: #4caf50;
+      color: #fff;
+      cursor: pointer;
+    }
+    .med-btn:hover { background: #3d8e41; }
+
+    /* --- Content section --- */
+    h2 { margin-top: 0; }
+    .category { margin-bottom: 18px; }
+    .category h3 { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <!-- Sidebar for medicine list -->
+  <div id="sidebar"></div>
+
+  <!-- Main area for details -->
+  <div id="content"><p>Select a medicine from the left side.</p></div>
+
+  <script>
+    /*------------- CONFIG -------------*/
+    // Predefined list of medicine files (without .json extension)
+    const medFiles = [
+        'Fluoxetine',
+        'Paracetamol',
+        // Add other medicine names here
+    ];
+
+    /*------------- HELPERS -------------*/
+    const sidebar = document.getElementById("sidebar");
+    const content = document.getElementById("content");
+
+    function initializeMedicines() {
+        medFiles.forEach(makeButton);
+    }
+
+    function cap(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+
+    function makeButton(name) {
+      const btn = document.createElement("button");
+      btn.textContent = cap(name);
+      btn.className = "med-btn";
+      btn.addEventListener("click", () => loadMedicine(name));
+      sidebar.appendChild(btn);
+    }
+
+    /*------------- LOAD & RENDER -------------*/
+    function loadMedicine(name) {
+        fetch(`Medicine/${name}.json`)
+            .then(r => {
+                if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+                return r.json();
+            })
+            .then(json => {
+                const firstKey = Object.keys(json)[0];
+                const med = json[firstKey][0];
+                showMedicine(med);
+            })
+            .catch(err => {
+                console.error('Error loading medicine:', err);
+                content.innerHTML = `<p style='color:red'>Error loading ${name}.json</p>`;
+            });
+    }
+
+    function showMedicine(m) {
+      content.innerHTML = "";
+
+      const title = document.createElement("h2");
+      title.textContent = m.name;
+      content.appendChild(title);
+
+      const goal = document.createElement("p");
+      goal.textContent = "Goal: " + m.goal;
+      content.appendChild(goal);
+
+      ["liquid", "tablet", "other"].forEach(cat => {
+        if (m[cat] && m[cat].length) {
+          const section = document.createElement("div");
+          section.className = "category";
+
+          const h3 = document.createElement("h3");
+          h3.textContent = cap(cat);
+          section.appendChild(h3);
+
+          const ul = document.createElement("ul");
+          m[cat].forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            ul.appendChild(li);
+          });
+          section.appendChild(ul);
+          content.appendChild(section);
+        }
+      });
+    }
+
+    /*------------- INIT -------------*/
+    initializeMedicines(); // Initialize with predefined list
+  </script>
+</body>
+</html>

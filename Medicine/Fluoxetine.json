@@ -1,0 +1,29 @@
+{
+    "Fluoxetine": [
+        {
+            "name": "Fluoxetine",
+            "goal": "antidepressant (Serotonin reuptake inhibitor)",
+            "liquid":[
+                "Zedprex",
+                "Prozac Likit",
+                "Soulzac",
+                "Foxeteva"
+            ],
+            "tablet":[
+                "Deprex",
+                "Florak",
+                "Foxeteva",
+                "Fulsac",
+                "Prozac",
+                "Zedprex"
+            ],
+            "other":[
+                "Prozac Weekly",
+                "Symbyax®",
+                "ODTs",
+                "pediatric formulations",
+                "Majistral"
+            ]
+        }
+    ]
+}

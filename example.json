@@ -1,0 +1,29 @@
+{
+    "Example_Name": [
+        {
+            "name": "Example_Name",
+            "goal": "example_goal",
+            "liquid":[
+                "example liquid medicine",
+                "example liquid medicine",
+                "example liquid medicine",
+                "example liquid medicine"
+            ],
+            "tablet":[
+                "example tablet medicine",
+                "example tablet medicine",
+                "example tablet medicine",
+                "example tablet medicine",
+                "example tablet medicine",
+                "example tablet medicine"
+            ],
+            "other":[
+                "example capsule medicine",
+                "example other medicine",
+                "example other medicine",
+                "example other medicine",
+                "example other medicine"
+            ]
+        }
+    ]
+}

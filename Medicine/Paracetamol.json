@@ -1,0 +1,38 @@
+{
+    "Paracetamol": [
+        {
+            "name": "Parecatamol",
+            "goal": "Pain and fever relief",
+            "liquid": [
+                "Calpol(TR/UK)",
+                "Tylenol(United States) Syrup (Acetaminophen)",
+                "Ben-u-ron Saft (Germany)",
+                "Doliprane Enfants (France)",
+                "Crocin Drops / Syrup (Bharat(India))",
+                "Panadol Syrup (Australia)",
+                "Cinal syrup (Japan)",
+                "Tempra Jarabe (Mexico)"
+            ],
+            "tablet": [
+                "Parol (TR/UK)",
+                "Tylenol (United States) Tablets (Acetaminophen)",
+                "Ben-u-ron Tabletten (Germany)",
+                "Doliprane Comprimés (France)",
+                "Crocin Tablets (Bharat(India))",
+                "Panadol Tablets (Australia)",
+                "Cinal Tablets (Japan)",
+                "Tempra Tabletas (Mexico)"
+            ],
+            "other": [
+                "Paracetamol Suppositories (TR/UK)",
+                "Tylenol Suppositories (United States)",
+                "Ben-u-ron Zäpfchen (Germany)",
+                "Doliprane Suppositoires (France)",
+                "Crocin Suppositories (Bharat(India))",
+                "Panadol Suppositories (Australia)",
+                "Cinal Suppositories (Japan)",
+                "Tempra Supositorios (Mexico)"
+            ]
+        }
+    ]
+}

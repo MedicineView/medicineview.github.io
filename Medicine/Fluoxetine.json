@@ -23,6 +23,18 @@
                 "ODTs",
                 "pediatric formulations",
                 "Majistral"
+            ],
+            "warnings": [
+                "May increase risk of suicidal thoughts, especially in children and young adults.",
+                "Risk of serotonin syndrome when used with other serotonergic drugs (e.g., triptans, MAOIs, tramadol).",
+                "Do not use with or within 14 days of MAO inhibitors.",
+                "May cause insomnia, agitation, or anxiety in some patients.",
+                "Use with caution in patients with a history of seizures (epilepsy).",
+                "Use during pregnancy (especially in the third trimester) may affect the newborn.",
+                "Can pass into breast milk; consult your doctor if breastfeeding.",
+                "May increase risk of gastrointestinal bleeding, especially with NSAIDs or aspirin.",
+                "Dose adjustment may be needed in patients with liver impairment.",
+                "Do not stop suddenly; tapering is recommended to avoid withdrawal symptoms."
             ]
         }
     ]

@@ -72,11 +72,72 @@
     ul {
       padding-left: 20px;
     }
+    #home-btn {
+      margin-left: 12px;
+      padding: 4px 8px;
+      font-size: 0.9rem;
+      background: #fff;
+      color: #6c63ff;
+      border: 1px solid #6c63ff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #home-btn:hover {
+      background: #f0f0ff;
+    }
+    #med-tab {
+      display: none;
+      margin-left: 8px;
+      padding: 4px 8px;
+      font-size: 0.9rem;
+      background: #fff;
+      color: #6c63ff;
+      border: 1px solid #6c63ff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #med-tab:hover {
+      background: #f0f0ff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    @media (max-width: 600px) {
+      body { flex-direction: column; }
+      #main { flex-direction: column; }
+      #med-tab {
+        display: inline-block;
+      }
+      #sidebar {
+        display: none; /* hide sidebar by default on mobile */
+        width: 100%;
+        box-shadow: none;
+      }
+      #sidebar.show {
+        display: block; /* will use JS to toggle this class */
+      }
+      #content { padding: 10px; }
+    }
+    .med-group h3 {
+      margin: 12px 0 6px;
+      font-size: 1rem;
+      color: #333;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <div id="header">Medicine Viewer</div>
+  <div id="header">
+    Medicine Viewer
+    <button id="home-btn" title="Home">Home</button>
+    <button id="med-tab" title="Medicines">Medicines</button>
+  </div>
   <div id="main">
     <div id="sidebar">
       <input type="text" id="search" placeholder="Search...">
@@ -85,48 +146,67 @@
   </div>
 
   <script>
-    const medFiles = ['Fluoxetine', 'Paracetamol'];
+    let medGroups = {};
     const sidebar = document.getElementById("sidebar");
     const content = document.getElementById("content");
-    const searchInput = document.getElementById("search");
     const medSynonyms = {}; // {medName: [list of trade names]}
 
     function initializeMedicines() {
-        medFiles.forEach(makeButton);
-        searchInput.addEventListener('input', filterMedicines);
-        preloadSynonyms();
+      fetch('medList.json')
+        .then(r => r.json())
+        .then(medList => {
+          medGroups = {}; // Reset groups
+          const promises = medList.map(name =>
+            fetch(`Medicine/${name}.json`)
+              .then(r => r.json())
+              .then(json => {
+                const firstKey = Object.keys(json)[0];
+                const med = json[firstKey][0];
+                const group = med.group || 'Uncategorized';
+                if (!medGroups[group]) medGroups[group] = [];
+                medGroups[group].push(name);
+                // Populate synonyms as well
+                const list = [];
+                ["liquid", "tablet", "other"].forEach(cat => {
+                  (med[cat] || []).forEach(item => list.push(item.toLowerCase()));
+                });
+                medSynonyms[name.toLowerCase()] = list;
+              })
+              .catch(err => console.error('Error loading ' + name, err))
+          );
+          Promise.all(promises).then(() => {
+            populateSidebar();
+            document.getElementById('home-btn').addEventListener('click', loadReadme);
+          });
+        });
+    }
+
+    function populateSidebar() {
+      sidebar.innerHTML = '<input type="text" id="search" placeholder="Search...">';
+      Object.entries(medGroups).forEach(([group, names]) => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'med-group';
+        const groupTitle = document.createElement('h3');
+        groupTitle.textContent = group;
+        groupDiv.appendChild(groupTitle);
+        names.forEach(name => {
+          const btn = document.createElement("button");
+          btn.textContent = cap(name);
+          btn.className = "med-btn";
+          btn.dataset.med = name.toLowerCase();
+          btn.addEventListener("click", () => loadMedicine(name));
+          groupDiv.appendChild(btn);
+        });
+        sidebar.appendChild(groupDiv);
+      });
+      // rebind search input
+      document.getElementById('search').addEventListener('input', filterMedicines);
     }
 
     function cap(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
 
-    function makeButton(name) {
-      const btn = document.createElement("button");
-      btn.textContent = cap(name);
-      btn.className = "med-btn";
-      btn.dataset.med = name.toLowerCase();
-      btn.addEventListener("click", () => loadMedicine(name));
-      sidebar.appendChild(btn);
-    }
-
-    function preloadSynonyms() {
-      medFiles.forEach(name => {
-        fetch(`Medicine/${name}.json`)
-          .then(r => r.json())
-          .then(json => {
-            const key = Object.keys(json)[0];
-            const med = json[key][0];
-            const list = [];
-            ["liquid", "tablet", "other"].forEach(cat => {
-              (med[cat] || []).forEach(item => list.push(item.toLowerCase()));
-            });
-            medSynonyms[name.toLowerCase()] = list;
-          })
-          .catch(err => console.error('Error loading ' + name, err));
-      });
-    }
-
     function filterMedicines() {
-      const term = searchInput.value.toLowerCase();
+      const term = document.getElementById('search').value.toLowerCase();
       document.querySelectorAll('.med-btn').forEach(btn => {
         const name = btn.dataset.med;
         const syns = medSynonyms[name] || [];
@@ -154,6 +234,7 @@
     }
 
     function showMedicine(m) {
+      content.classList.add('fade-in');
       content.innerHTML = "";
 
       const title = document.createElement("h2");
@@ -183,6 +264,24 @@
           content.appendChild(section);
         }
       });
+
+      // Insert Warnings section if present
+      if (m.warnings && m.warnings.length) {
+        const warnSection = document.createElement("div");
+        warnSection.className = "category";
+        const warnH3 = document.createElement("h3");
+        warnH3.textContent = "Warnings";
+        warnSection.appendChild(warnH3);
+
+        const warnUl = document.createElement("ul");
+        m.warnings.forEach(warn => {
+          const li = document.createElement("li");
+          li.textContent = warn;
+          warnUl.appendChild(li);
+        });
+        warnSection.appendChild(warnUl);
+        content.appendChild(warnSection);
+      }
     }
 
     function loadReadme() {
@@ -198,6 +297,11 @@
     }
 
     initializeMedicines();
+    // Mobile Medicines Tab toggle
+    const medTab = document.getElementById('med-tab');
+    medTab.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+    });
     loadReadme();
   </script>
 </body>

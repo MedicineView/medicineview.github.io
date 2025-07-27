@@ -1,6 +1,7 @@
 {
     "Paracetamol": [
         {
+            "id": "0000001",
             "name": "Parecatamol",
             "goal": "Pain and fever relief",
             "liquid": [
@@ -32,6 +33,14 @@
                 "Panadol Suppositories (Australia)",
                 "Cinal Suppositories (Japan)",
                 "Tempra Supositorios (Mexico)"
+            ],
+            "warnings": [
+                "May cause liver damage if taken in high doses or combined with alcohol.",
+                "Avoid using multiple products containing paracetamol (acetaminophen) to prevent overdose.",
+                "Consult a doctor before use if you have liver disease or are taking blood thinners like warfarin.",
+                "Keep out of reach of children; accidental overdose can be fatal.",
+                "In rare cases, may cause serious skin reactions like Stevens-Johnson syndrome.",
+                "Do not exceed the recommended dose on the label or as prescribed."
             ]
         }
     ]

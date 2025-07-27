@@ -1,0 +1,27 @@
+{
+  "Chemotherapy": [
+    {
+      "id": "00000003",
+      "name": "Chemotherapy",
+      "goal": "Destroy cancer cells throughout the body",
+      "liquid": [],
+      "tablet": [],
+      "other": [
+       "IV infusion of Doxorubicin",
+        "Intravenous Cyclophosphamide",
+       "Subcutaneous injection of Cytarabine",
+        "Intrathecal Methotrexate (into spine)",
+       "Port-a-cath (implanted device for IV chemo)"
+     ],
+      "warnings": [
+        "May cause severe nausea, vomiting, and fatigue.",
+       "Can suppress immune system; avoid crowded places and sick people.",
+       "Hair loss is common during treatment.",
+        "Increases risk of infection, bleeding, and anemia.",
+        "Requires regular blood tests to monitor side effects.",
+        "Avoid live vaccines during treatment.",
+        "Report fever, bleeding, or mouth sores to your doctor immediately."
+      ]
+    }
+  ]
+}

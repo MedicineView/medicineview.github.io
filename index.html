@@ -89,7 +89,7 @@
     const sidebar = document.getElementById("sidebar");
     const content = document.getElementById("content");
     const searchInput = document.getElementById("search");
-    const medSynonyms = {};
+    const medSynonyms = {}; // {medName: [list of trade names]}
 
     function initializeMedicines() {
         medFiles.forEach(makeButton);

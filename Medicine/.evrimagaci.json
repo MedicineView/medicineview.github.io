@@ -1,0 +1,10 @@
+{
+    "other-video-subject": [
+        {
+        "name": "ama bu başka bir videonun konusu",
+        "goal": "Bir Easter egg buldun! ama bu başka bir kanalın konusu (Evrim Ağacı)",
+        "description": "Evrim ağacının meşhur sözü",
+        "group": ".evrimagaci"
+        }
+    ]
+}

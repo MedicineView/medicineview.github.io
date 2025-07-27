@@ -147,6 +147,7 @@
 
   <script>
     let medGroups = {};
+    let searchGroupName = '';
     const sidebar = document.getElementById("sidebar");
     const content = document.getElementById("content");
     const medSynonyms = {}; // {medName: [list of trade names]}
@@ -184,6 +185,8 @@
     function populateSidebar() {
       sidebar.innerHTML = '<input type="text" id="search" placeholder="Search...">';
       Object.entries(medGroups).forEach(([group, names]) => {
+        // Hide groups starting with '.' except when searching for that group
+        if (group.startsWith('.') && group !== searchGroupName) return;
         const groupDiv = document.createElement('div');
         groupDiv.className = 'med-group';
         const groupTitle = document.createElement('h3');
@@ -207,6 +210,15 @@
 
     function filterMedicines() {
       const term = document.getElementById('search').value.toLowerCase();
+      searchGroupName = '';
+      // If the term is a dot-group and exists, show only that group
+      if (term.startsWith('.') && medGroups[term]) {
+        searchGroupName = term;
+        populateSidebar();
+        // Show all medicine buttons in that group
+        document.querySelectorAll('.med-btn').forEach(btn => btn.style.display = '');
+        return;
+      }
       document.querySelectorAll('.med-btn').forEach(btn => {
         const name = btn.dataset.med;
         const syns = medSynonyms[name] || [];

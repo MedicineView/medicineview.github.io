@@ -1,0 +1,11 @@
+{
+    "emcalc":[ 
+        {
+            "name": "you found easter egg!",
+            "goal": "install the emcalc app (emcalc.github.io)",
+            "id": "00003.14",
+            "group": ".emcalc",
+            "description": "this emcalc app is a calculator for nuclear power plants e=mc^2 calculator not medicine"
+        }
+    ]
+}

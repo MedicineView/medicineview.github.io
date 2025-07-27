@@ -1,0 +1,51 @@
+{
+    "Ibuprofen": [
+        {
+            "id": "00000004",
+            "name": "Ibuprofen",
+            
+            "goal": "Pain and fever relief",
+            "group": "Analgesics",
+            "liquid": [
+                "Dolven(Turkiye/Tunisia)",
+                "nurofen syrup(TR/UK)",
+                "Motrin Infant Drops (Canada/US)",
+                "Advil Liquid (Canada/US)",
+                "Nurofen Saft (Germany)",
+                "Advil Enfants (France)",
+                "Ibugesic Plus Syrup (Bharat(India))",
+                "Advil Syrup (Australia)",
+                "Brufen Syrup (Japan)",
+                "Dolo-Neurobion Infantil (Mexico)"
+            ],
+            "tablet": [
+                "Nurofen Tablet(TR/UK)",
+                "Advil Tablets (Canada/US)",
+                "Motrin Tablets (Canada/US)",
+                "Nurofen Tabletten (Germany)",
+                "Advil Comprimés (France)",
+                "Ibugesic Tablets (Bharat(India))",
+                "Advil Caplets (Australia)",
+                "Brufen Tablets (Japan)",
+                "Dolocam Plus (Mexico)"
+            ],
+            "other": [
+                "Nurofen Zäpfchen (Germany)",
+                "Advil Suppositories (France)",
+                "Ibuprofen Gel (TR/UK)",
+                "Nurofen Gel",
+                "Deep Relief Gel",
+                "Brufen IV"
+            ],
+            "warnings": [
+                "Prolonged use may increase the risk of gastrointestinal bleeding, ulcers, or perforation.",
+                "Not recommended for people with kidney disease, heart failure, or peptic ulcer.",
+                "Avoid use with other NSAIDs or aspirin unless directed by a doctor.",
+                "Can raise blood pressure; monitor if you have hypertension.",
+                "May cause allergic reactions, especially in people with asthma.",
+                "Use the lowest effective dose for the shortest possible duration."
+            ],
+            "description": ""
+        }
+    ]
+}

@@ -1,8 +1,12 @@
 {
     "Fluoxetine": [
         {
+            "id": "00000002",
             "name": "Fluoxetine",
+            
             "goal": "antidepressant (Serotonin reuptake inhibitor)",
+            "group":"Antidepressants",
+
             "liquid":[
                 "Zedprex",
                 "Prozac Likit",

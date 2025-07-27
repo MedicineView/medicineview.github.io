@@ -35,6 +35,7 @@
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      box-sizing: border-box;
     }
 
     /* --- Buttons --- */
@@ -89,10 +90,12 @@
     const sidebar = document.getElementById("sidebar");
     const content = document.getElementById("content");
     const searchInput = document.getElementById("search");
+    const medSynonyms = {}; // {medName: [list of trade names]}
 
     function initializeMedicines() {
         medFiles.forEach(makeButton);
         searchInput.addEventListener('input', filterMedicines);
+        preloadSynonyms();
     }
 
     function cap(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
@@ -101,14 +104,36 @@
       const btn = document.createElement("button");
       btn.textContent = cap(name);
       btn.className = "med-btn";
+      btn.dataset.med = name.toLowerCase();
       btn.addEventListener("click", () => loadMedicine(name));
       sidebar.appendChild(btn);
+    }
+
+    function preloadSynonyms() {
+      medFiles.forEach(name => {
+        fetch(`Medicine/${name}.json`)
+          .then(r => r.json())
+          .then(json => {
+            const key = Object.keys(json)[0];
+            const med = json[key][0];
+            const list = [];
+            ["liquid", "tablet", "other"].forEach(cat => {
+              (med[cat] || []).forEach(item => list.push(item.toLowerCase()));
+            });
+            medSynonyms[name.toLowerCase()] = list;
+          })
+          .catch(err => console.error('Error loading ' + name, err));
+      });
     }
 
     function filterMedicines() {
       const term = searchInput.value.toLowerCase();
       document.querySelectorAll('.med-btn').forEach(btn => {
-        btn.style.display = btn.textContent.toLowerCase().includes(term) ? '' : 'none';
+        const name = btn.dataset.med;
+        const syns = medSynonyms[name] || [];
+        const matchName = name.includes(term);
+        const matchSyn = syns.some(s => s.includes(term));
+        btn.style.display = matchName || matchSyn ? '' : 'none';
       });
     }
 

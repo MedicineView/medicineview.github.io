@@ -17,7 +17,7 @@ The search box supports trade names in addition to active ingredient names. Typi
 
 To add a new medicine, place a JSON file with the same structure as the provided examples in the `Medicine` folder and include its name in the `medFiles` array inside `index.html`.
 
-v1.1.0 - Eymen Yıldırım®
+v1.1.0 - Eymen Yıldırım
 
 ## License
 This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International** (CC BY-NC 4.0) License.  See the [LICENSE](LICENSE) file for details.

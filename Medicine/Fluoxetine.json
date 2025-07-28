@@ -39,7 +39,8 @@
                 "May increase risk of gastrointestinal bleeding, especially with NSAIDs or aspirin.",
                 "Dose adjustment may be needed in patients with liver impairment.",
                 "Do not stop suddenly; tapering is recommended to avoid withdrawal symptoms."
-            ]
+            ],
+            "description": "Fluoxetine is a selective serotonin reuptake inhibitor (SSRI) used primarily to treat major depressive disorder, obsessive-compulsive disorder, bulimia nervosa, and panic disorder. It works by increasing the levels of serotonin in the brain, which can help improve mood, anxiety, and overall emotional well-being."
         }
     ]
 }

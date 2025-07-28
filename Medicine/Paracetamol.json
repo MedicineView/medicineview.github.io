@@ -43,7 +43,8 @@
                 "Keep out of reach of children; accidental overdose can be fatal.",
                 "In rare cases, may cause serious skin reactions like Stevens-Johnson syndrome.",
                 "Do not exceed the recommended dose on the label or as prescribed."
-            ]
+            ],
+            "description": "Paracetamol, also known as acetaminophen, is a widely used over-the-counter medication for relieving pain and reducing fever. It is generally considered safe when used as directed, but overdosing can lead to severe liver damage."
         }
     ]
 }

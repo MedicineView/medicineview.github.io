@@ -1,0 +1,46 @@
+{
+    "Acetylsalicylic acid": [
+        {
+            "id": "00000005",
+            "name": "Acetylsalicylic acid",
+            
+            "goal": "Pain, fever, and inflammation relief; antiplatelet effect",
+            "group": "Analgesics",
+            "liquid": [
+                "Aspirin Syrup (TR)",
+                "Alka-Seltzer Effervescent (US)",
+                "Bayer Aspirin Liquid (Germany)",
+                "Aspisol (France)",
+                "Disprin CV Liquid (Bharat(India))",
+                "Cartia Liquid (Australia)",
+                "Bufferin Liquid (Japan)",
+                "Sedalmerck Jarabe (Mexico)"
+            ],
+            "tablet": [
+                "Aspirin Tablets (TR)",
+                "Ecotrin Tablets (United States)",
+                "Bayer Aspirin Tabletten (Germany)",
+                "Kardegic (France)",
+                "Disprin(Bharat(India))",
+                "Cartia (Australia)",
+                "Bufferin (Japan)",
+                "Sedalmerck (Mexico)"
+            ],
+            "other": [
+                "Aspirin Suppositories",
+                "Chewable Aspirin",
+                "Effervescent Aspirin",
+                "Topical Aspirin Gel"
+            ],
+            "warnings": [
+                "Can increase risk of bleeding, especially in patients taking anticoagulants.",
+                "Not recommended for children with viral infections (Reye’s syndrome risk).",
+                "May cause stomach irritation or ulcers with long-term use.",
+                "Use with caution in people with asthma or kidney problems.",
+                "Should be avoided before surgeries unless advised by a doctor.",
+                "Do not take with other NSAIDs unless prescribed."
+            ],
+            "description": "Acetylsalicylic acid, commonly known as aspirin, is a nonsteroidal anti-inflammatory drug (NSAID) used to relieve pain, reduce inflammation, and lower fever. It also has antiplatelet properties, making it useful in preventing blood clots."
+        }
+    ]
+}

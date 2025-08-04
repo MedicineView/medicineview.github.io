@@ -1,0 +1,35 @@
+{
+    "Morphine": [
+        {
+            "id": "00000005",
+            "name": "Morphine",
+            
+            "goal": "Pain relief",
+            "group": "Analgesics",
+            "liquid": [
+                "Oramorph",
+                "Morphine Sulfate oral"
+            ],
+            "tablet": [
+                "MST Continus",
+                "Sevredol"
+            ],
+            "other": [
+                "Morphine HCl ampul",
+                "Kapanol",
+                "PCA Morfin",
+                "Supposituvar form",
+                "Morphine Suppositories"
+            ],
+            "warnings": [
+                "Can cause respiratory depression, especially in high doses or when combined with other depressants.",
+                "May lead to physical and psychological dependence with prolonged use.",
+                "Should only be used under medical supervision due to the risk of overdose.",
+                "Avoid driving or operating machinery until you know how morphine affects you.",
+                "Sudden discontinuation after long-term use may cause withdrawal symptoms.",
+                "Use with caution in elderly, patients with kidney or liver problems, and those with respiratory issues like COPD or asthma."
+            ],
+            "description": "Morphine is a potent opioid analgesic used to relieve moderate to severe pain. It works by binding to opioid receptors in the brain and spinal cord to reduce the perception of pain. Morphine is available in various forms including tablets, liquid solutions, injectables, and suppositories. It is often used in clinical settings, especially for cancer pain, post-surgical pain, and palliative care."
+        }
+    ]
+}
